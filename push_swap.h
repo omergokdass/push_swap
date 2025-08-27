@@ -33,12 +33,6 @@ void    sort_5(t_stack **a, t_stack **b);
 
 int	*parse_input(int argc, char **argv);
 
-/* normalize.c */
-void	normalize_stack(t_stack *a, int size);
-
-/* chunk_sort.c */
-void	chunk_sort(t_stack **a, t_stack **b, int size);
-
 
 
 void print_stack(t_stack *stack, char name);
