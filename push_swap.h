@@ -15,6 +15,8 @@ t_stack *stack_new(int value);
 void    stack_add_back(t_stack **stack, t_stack *new_node);
 int     stack_size(t_stack *stack);
 void    free_stack(t_stack **stack);
+void    free_split(char **split);
+
 
 void    sa(t_stack **a);
 void    sb(t_stack **b);
@@ -31,11 +33,6 @@ void    rrr(t_stack **a, t_stack **b);
 void    sort_3(t_stack **a);
 void    sort_5(t_stack **a, t_stack **b);
 
-int	*parse_input(int argc, char **argv);
-
-
-
-void print_stack(t_stack *stack, char name);
-
+t_stack *parse_input_to_stack(char **datas);
 
 #endif

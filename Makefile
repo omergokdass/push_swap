@@ -1,5 +1,5 @@
 NAME = push_swap
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c \
 	stack_utils.c \
@@ -7,9 +7,9 @@ SRC = push_swap.c \
 	rules/rules1.c \
 	rules/rules2.c \
 	rules/rules3.c \
-	sort_small.c \
 	parse_input.c \
-	main.c
+	sort_small.c
+
 LIBFT = libft/libft.a
 INCLUDE = -Iinclude -Ilibft
 
@@ -27,7 +27,7 @@ libft/libft.a:
 	$(MAKE) -C libft
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ)
 	$(MAKE) clean -C libft
 
 fclean: clean

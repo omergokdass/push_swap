@@ -1,64 +1,70 @@
 #include "push_swap.h"
 
-static int	is_number(char *str)
+static int is_number(char *str)
 {
-	int i;
-
-	i = 0;
+	int i = 0;
 	if (!str[i])
-		return (0);
+		return 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return (0);
+			return 0;
 		i++;
 	}
-	return (1);
+	return 1;
 }
 
-static int	has_duplicate(int *arr, int size)
+static int has_duplicate_stack(t_stack *a)
 {
-	int i;
-	int j;
-
-	i = 0;
-	while (i < size)
+	t_stack *tmp1 = a;
+	while (tmp1)
 	{
-		j = i + 1;
-		while (j < size)
+		t_stack *tmp2;
+
+        tmp2 = tmp1->next;
+		while (tmp2)
 		{
-			if (arr[i] == arr[j])
-				return (1);
+			if (tmp1->value == tmp2->value)
+				return 1;
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return 0;
+}
+
+t_stack *parse_input_to_stack(char **av)
+{
+	t_stack *a = NULL;
+	int i = 1;
+
+	while (av[i])
+	{
+		char **split = ft_split(av[i], ' ');
+		int j = 0;
+		while (split[j])
+		{
+			if (!is_number(split[j]))
+			{
+				write(2, "Error\n", 6);
+				free_split(split);
+				free_stack(&a);
+				exit(1);
+			}
+			stack_add_back(&a, stack_new(ft_atoi(split[j])));
 			j++;
 		}
+		free_split(split);
 		i++;
 	}
-	return (0);
-}
 
-int	*parse_input(int ac, char **av)
-{
-	int	*arr;
-	long	tmp;
-	int		i;
-
-	arr = malloc(sizeof(int) * (ac - 1));
-	if (!arr)
-		return (NULL);
-	i = 0;
-	while (i < ac - 1)
+	if (has_duplicate_stack(a))
 	{
-		if (!is_number(av[i + 1]))
-			write(2, "Error\n", 6), free(arr), exit(1);
-		tmp = ft_atoi(av[i + 1]);
-		if (tmp > 2147483647 || tmp < -2147483648)
-			write(2, "Error\n", 6), free(arr), exit(1);
-		arr[i] = (int)tmp;
-		i++;
+		write(2, "Error\n", 6);
+		free_stack(&a);
+		exit(1);
 	}
-	if (has_duplicate(arr, ac - 1))
-		write(2, "Error\n", 6), free(arr), exit(1);
-	return (arr);
+	return a;
 }

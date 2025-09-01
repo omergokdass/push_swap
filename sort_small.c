@@ -27,11 +27,6 @@ void	sort_3(t_stack **a)
 		rra(a);
 }
 
-
-// 5 sayı için
-
-#include "push_swap.h"
-
 static int	find_min_pos(t_stack *a)
 {
 	int		min;
