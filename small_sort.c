@@ -54,16 +54,22 @@ static int	find_min_pos(t_stack *a)
 void	sort_5(t_stack **a, t_stack **b)
 {
 	int	pos;
+	int	size;
 
 	while (stack_size(*a) > 3)
 	{
+		size = stack_size(*a);
 		pos = find_min_pos(*a);
-		if (pos <= stack_size(*a) / 2)
+		if (pos <= size / 2)
+		{
 			while (pos-- > 0)
 				ra(a);
+		}
 		else
-			while (pos++ < stack_size(*a))
+		{
+			while (pos++ < size)
 				rra(a);
+		}
 		pb(a, b);
 	}
 	sort_3(a);

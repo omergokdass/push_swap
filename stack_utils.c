@@ -1,60 +1,72 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogokdas < ogokdas@student.42istanbul.co    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/03 15:47:21 by ogokdas           #+#    #+#             */
+/*   Updated: 2025/09/03 17:12:29 by ogokdas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-t_stack *stack_new(int value)
+t_stack	*stack_new(int value)
 {
-    t_stack *node;
+	t_stack	*node;
 
-    node = malloc(sizeof(t_stack));
-    if (!node)
-        return (NULL);
-    node->value = value;
-    node->next = NULL;
-    return (node);
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->value = value;
+	node->next = NULL;
+	return (node);
 }
 
-void stack_add_back(t_stack **stack, t_stack *new_node)
+void	stack_add_back(t_stack **stack, t_stack *new_node)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    if (!stack || !new_node)
-        return ;
-    if (*stack == NULL)
-    {
-        *stack = new_node;
-        return ;
-    }
-    tmp = *stack;
-    while (tmp->next)
-        tmp = tmp->next;
-    tmp->next = new_node;
+	if (!stack || !new_node)
+		return ;
+	if (*stack == NULL)
+	{
+		*stack = new_node;
+		return ;
+	}
+	tmp = *stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_node;
 }
 
-int stack_size(t_stack *stack)
+int	stack_size(t_stack *stack)
 {
-    int len;
+	int	len;
 
-    len = 0;
-    while (stack)
-    {
-        len++;
-        stack = stack->next;
-    }
-    return (len);
+	len = 0;
+	while (stack)
+	{
+		len++;
+		stack = stack->next;
+	}
+	return (len);
 }
 
-void free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
-    t_stack *tmp;
+	t_stack	*tmp;
 
-    if (!stack)
-        return ;
-    while (*stack)
-    {
-        tmp = (*stack)->next;
-        free(*stack);
-        *stack = tmp;
-    }
-    *stack = NULL;
+	if (!stack)
+		return ;
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		*stack = tmp;
+	}
+	*stack = NULL;
 }
 
 void	free_split(char **split)

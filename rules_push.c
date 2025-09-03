@@ -1,4 +1,4 @@
-#include "../push_swap.h"
+#include "push_swap.h"
 
 static void	push(t_stack **from, t_stack **to)
 {
@@ -11,8 +11,7 @@ static void	push(t_stack **from, t_stack **to)
 	tmp->next = *to;
 	*to = tmp;
 }
-// to   a  1 2 3 4 5
-// from b  6 7 8
+
 void	pa(t_stack **a, t_stack **b)
 {
 	push(b, a);
