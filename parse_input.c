@@ -6,7 +6,7 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:26 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 03:29:24 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 21:11:20 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static int	is_number(char *s)
 	}
 	return (1);
 }
-
 
 static void	has_duplicate_stack(t_stack *a)
 {

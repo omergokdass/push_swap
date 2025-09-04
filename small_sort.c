@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	sort_3(t_stack **a)
+void	sort_three(t_stack **a)
 {
 	int	first;
 	int	second;
@@ -51,7 +51,7 @@ static int	find_min_pos(t_stack *a)
 	return (pos);
 }
 
-void	sort_5(t_stack **a, t_stack **b)
+void	sort_five(t_stack **a, t_stack **b)
 {
 	int	pos;
 	int	size;
@@ -72,7 +72,20 @@ void	sort_5(t_stack **a, t_stack **b)
 		}
 		pb(a, b);
 	}
-	sort_3(a);
+	sort_three(a);
 	while (*b)
 		pa(a, b);
+}
+
+void	small_sort(t_stack **a, t_stack **b)
+{
+	int size;
+	
+	size = stack_size(*a);
+	if (size == 2 && (*a)->value > (*a)->next->value)
+			sa(a);
+	else if (size == 3)
+		sort_three(a);
+	else
+		sort_five(a, b);
 }

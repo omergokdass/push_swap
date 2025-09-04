@@ -10,6 +10,7 @@ SRC = push_swap.c \
 	parse_input.c \
 	small_sort.c \
 	normalize.c \
+	sort_utils.c \
 	chunk_sort.c
 
 LIBFT = libft/libft.a

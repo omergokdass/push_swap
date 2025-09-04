@@ -6,7 +6,7 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:45 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 03:22:25 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:58:21 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,24 @@ void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 
-void	sort_3(t_stack **a);
-void	sort_5(t_stack **a, t_stack **b);
+void	sort_three(t_stack **a);
+void	sort_five(t_stack **a, t_stack **b);
+void	small_sort(t_stack **a, t_stack **b);
 
 t_stack	*parse_input_to_stack(char **av);
 
-int *stack_to_array(t_stack *a);
-void    sort_array(int *arr, int size);
-void normalize_stack(t_stack *a, int *arr, int size);
+int		*stack_to_array(t_stack *a);
+void	sort_array(int *arr, int size);
+void	normalize_stack(t_stack *a, int *arr, int size);
 
+int get_chunk_count(int size);
+int get_chunk_pivot(int chunk_index, int size, int chunk_count);
+int shortest_way(t_stack *stack, int target);
+static void	push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot);
+int get_max(t_stack *stack);
+
+void push_chunks_to_b(t_stack **a, t_stack **b, int size);
+void push_back_to_a(t_stack **a, t_stack **b);
+void big_sort(t_stack **a, t_stack **b);
 
 #endif

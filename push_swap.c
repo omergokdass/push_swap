@@ -6,37 +6,34 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:32 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 03:23:22 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 18:53:00 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_stack	*a;
-	t_stack	*b;
-	int		size;
+    t_stack *a;
+    t_stack *b;
+    int *arr;
+    int size;
 
-	if (ac < 2)
-		return (0);
-	a = parse_input_to_stack(av);
-	b = NULL;
-	size = stack_size(a);
-	if (size <= 5)
-	{
-		if (size == 2 && a->value > a->next->value)
-			sa(&a);
-		else if (size == 3)
-			sort_3(&a);
-		else
-			sort_5(&a, &b);
-	}
-	else
-	{
-		
-	}
-	free_stack(&a);
-	free_stack(&b);
-	return (0);
+    if (ac < 2)
+        return 0;
+
+    a = parse_input_to_stack(av);
+    size = stack_size(a);
+    arr = stack_to_array(a);
+    sort_array(arr, size);
+    normalize_stack(a, arr, size);
+    free(arr);
+
+    b = NULL;
+
+    big_sort(&a, &b);
+
+    free_stack(&a);
+    free_stack(&b);
+    return 0;
 }
