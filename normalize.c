@@ -6,7 +6,7 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 20:12:50 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 03:09:13 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 03:29:50 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int *stack_to_array(t_stack *a)
 
     i = 0;
     arr = malloc(sizeof(int)*stack_size(a));
+    if(!arr)
+        return 0;
     while(a)
     {
         arr[i] = a->value;

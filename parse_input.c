@@ -6,7 +6,7 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:26 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 02:54:22 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 03:29:24 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ static int	is_number(char *s)
 {
 	int	i;
 
-	i = 0;
-	if (!s[i])
+	if (!s || !*s)
 		return (0);
+	i = 0;
 	if (s[i] == '-' || s[i] == '+')
+	{
+		if (!ft_isdigit(s[i + 1]))
+			return (0);
 		i++;
+	}
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
@@ -29,6 +33,7 @@ static int	is_number(char *s)
 	}
 	return (1);
 }
+
 
 static void	has_duplicate_stack(t_stack *a)
 {
