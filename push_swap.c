@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogokdas < ogokdas@student.42istanbul.co    +#+  +:+       +#+        */
+/*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:32 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/03 20:18:51 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 03:23:22 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,9 @@ int	main(int ac, char **av)
 		else
 			sort_5(&a, &b);
 	}
-	else 
+	else
 	{
-		normalize_stack(&a);
-		chunk_sort(&a);
+		
 	}
 	free_stack(&a);
 	free_stack(&b);

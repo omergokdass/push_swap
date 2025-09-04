@@ -3,12 +3,14 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c \
 	stack_utils.c \
-	rules0.c \
-	rules1.c \
-	rules2.c \
-	rules3.c \
+	rules_swap.c \
+	rules_push.c \
+	rules_rotate.c \
+	rules_rev.c \
 	parse_input.c \
-	small_sort.c
+	small_sort.c \
+	normalize.c \
+	chunk_sort.c
 
 LIBFT = libft/libft.a
 INCLUDE = -Iinclude -Ilibft

@@ -6,17 +6,14 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 20:12:50 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 00:47:53 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 03:09:13 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int *stack_to_array(t_stack *a)
 {
-    // 2 5 6 1 4 3 8 9 7
-
     int *arr;
     int i;
 
@@ -36,47 +33,39 @@ void    sort_array(int *arr, int size)
     int i;
     int j;
     int tmp;
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* int main()
-{
-    t_stack *a = NULL;
-    stack_add_back(&a,stack_new(12));
-    stack_add_back(&a,stack_new(44));
-    stack_add_back(&a,stack_new(21));
-
-    int *arr = stack_to_array(a);
-
-    int i = 0;
-    while(arr[i])
+    i = 0;
+    while(i < size - 1)
     {
-        printf("%d ",arr[i]);
+        j = 0;
+        while(j < size - 1)
+        {
+            if(arr[j] > arr[j + 1])
+            {
+                tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+            j++;
+        }
         i++;
     }
 }
 
+void normalize_stack(t_stack *a, int *arr, int size)
+{
+    int i;
+
+    i = 0;
+    while(a)
+    {
+        i = 0;
+        while(i < size)
+        {
+            if(a->value == arr[i])
+                break;
+            i++;
+        }
+        a->value = i;
+        a = a->next;
+    }
+}

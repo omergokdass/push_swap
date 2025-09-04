@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogokdas < ogokdas@student.42istanbul.co    +#+  +:+       +#+        */
+/*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:45 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/03 16:19:10 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/04 03:22:25 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	rrr(t_stack **a, t_stack **b);
 void	sort_3(t_stack **a);
 void	sort_5(t_stack **a, t_stack **b);
 
-t_stack	*parse_input_to_stack(char **datas);
+t_stack	*parse_input_to_stack(char **av);
+
+int *stack_to_array(t_stack *a);
+void    sort_array(int *arr, int size);
+void normalize_stack(t_stack *a, int *arr, int size);
+
 
 #endif
