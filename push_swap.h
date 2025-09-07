@@ -6,12 +6,15 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:45 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 18:58:21 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/07 16:31:17 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+#define INT_MAX 2147483647
+#define INT_MIN (-2147483648)
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -51,10 +54,10 @@ int		*stack_to_array(t_stack *a);
 void	sort_array(int *arr, int size);
 void	normalize_stack(t_stack *a, int *arr, int size);
 
-int get_chunk_count(int size);
-int get_chunk_pivot(int chunk_index, int size, int chunk_count);
-int shortest_way(t_stack *stack, int target);
-static void	push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot);
+int		get_chunk_count(int size);
+int		get_chunk_pivot(int chunk_index, int size, int chunk_count);
+int		shortest_way(t_stack *stack, int target);
+void push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot);
 int get_max(t_stack *stack);
 
 void push_chunks_to_b(t_stack **a, t_stack **b, int size);

@@ -6,7 +6,7 @@
 /*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:26 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/04 21:11:20 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/06 01:27:44 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,38 @@ static void	error_and_free(char **split, t_stack **a)
 	exit(1);
 }
 
+static void	parse_split(char **split, t_stack **a)
+{
+	int		j;
+	long	val;
+
+	if (!split || !split[0])
+		error_and_free(split, a);
+	j = 0;
+	while (split[j])
+	{
+		if (!is_number(split[j]))
+			error_and_free(split, a);
+		val = ft_atoi(split[j]);
+		if (val > INT_MAX || val < INT_MIN)
+			error_and_free(split, a);
+		stack_add_back(a, stack_new((int)val));
+		j++;
+	}
+}
+
 t_stack	*parse_input_to_stack(char **av)
 {
 	t_stack	*a;
 	char	**split;
 	int		i;
-	int		j;
 
 	a = NULL;
 	i = 1;
 	while (av[i])
 	{
 		split = ft_split(av[i], ' ');
-		j = 0;
-		while (split[j])
-		{
-			if (!is_number(split[j]))
-				error_and_free(split, &a);
-			stack_add_back(&a, stack_new(ft_atoi(split[j])));
-			j++;
-		}
+		parse_split(split, &a);
 		free_split(split);
 		i++;
 	}

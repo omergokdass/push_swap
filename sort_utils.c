@@ -7,9 +7,9 @@ int get_chunk_count(int size)
     if (size <= 100)
         chunk_count = 5;
     else if (size <= 500)
-        chunk_count = size / 20;
+        chunk_count = 13;
     else
-        chunk_count = size / 25;
+        chunk_count = size / 42;
 
     return chunk_count;
 }
@@ -53,22 +53,55 @@ int shortest_way(t_stack *stack, int target)
     else
         return -(size - pos);
 }
-
-static void	push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot)
+static int	find_cheapest_in_chunk(t_stack *a, int prev_pivot, int pivot)
 {
+	int		best_val;
+	int		best_cost;
+	int		cost;
 	t_stack	*tmp;
-	int		steps;
 
-	tmp = *a;
-	while (tmp && (tmp->value <= prev_pivot || tmp->value > pivot))
+	tmp = a;
+	best_val = -1;
+	best_cost = 2147483647;
+	while (tmp)
+	{
+		if (tmp->value > prev_pivot && tmp->value <= pivot)
+		{
+			cost = shortest_way(a, tmp->value);
+			if (abs(cost) < abs(best_cost))
+			{
+				best_cost = cost;
+				best_val = tmp->value;
+			}
+		}
 		tmp = tmp->next;
-	if (!tmp)
+	}
+	return (best_val);
+}
+
+void	push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot)
+{
+	int	val;
+	int	cost;
+
+	val = find_cheapest_in_chunk(*a, prev_pivot, pivot);
+	if (val == -1)
 		return ;
-	steps = shortest_way(*a, tmp->value);
-	while (steps > 0 && steps--)
+	cost = shortest_way(*a, val);
+	while (cost > 0)
+	{
 		ra(a);
-	while (steps < 0 && steps++)
+		cost--;
+	}
+	while (cost < 0)
+	{
 		rra(a);
+		cost++;
+	}
+
+    if (*b && val < (*b)->value)
+		rb(b);
+	
 	pb(a, b);
 }
 
