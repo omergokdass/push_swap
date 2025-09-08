@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:32 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/06 01:31:18 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/08 21:09:11 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	main(int ac, char **av)
 	sort_array(arr, size);
 	normalize_stack(a, arr, size);
 	free(arr);
+	if (is_sorted(a))
+    	return (0);
 	b = NULL;
 	big_sort(&a, &b);
 	free_stack(&a);

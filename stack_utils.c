@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogokdas < ogokdas@student.42istanbul.co    +#+  +:+       +#+        */
+/*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:21 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/03 17:12:29 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/08 21:06:15 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,14 @@ void	free_split(char **split)
 		i++;
 	}
 	free(split);
+}
+int is_sorted(t_stack *stack)
+{
+    while (stack && stack->next)
+    {
+        if (stack->value > stack->next->value)
+            return (0);
+        stack = stack->next;
+    }
+    return (1);
 }

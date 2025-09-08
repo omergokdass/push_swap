@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:45 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/07 16:31:17 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/08 21:07:10 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		get_chunk_pivot(int chunk_index, int size, int chunk_count);
 int		shortest_way(t_stack *stack, int target);
 void push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot);
 int get_max(t_stack *stack);
+int is_sorted(t_stack *stack);
 
 void push_chunks_to_b(t_stack **a, t_stack **b, int size);
 void push_back_to_a(t_stack **a, t_stack **b);
