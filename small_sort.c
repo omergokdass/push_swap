@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   small_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/09 16:14:58 by ogokdas           #+#    #+#             */
+/*   Updated: 2025/09/09 16:33:37 by ogokdas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	sort_three(t_stack **a)
@@ -79,11 +91,11 @@ void	sort_five(t_stack **a, t_stack **b)
 
 void	small_sort(t_stack **a, t_stack **b)
 {
-	int size;
-	
+	int	size;
+
 	size = stack_size(*a);
 	if (size == 2 && (*a)->value > (*a)->next->value)
-			sa(a);
+		sa(a);
 	else if (size == 3)
 		sort_three(a);
 	else

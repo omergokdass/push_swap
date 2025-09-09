@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
+/*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 12:46:35 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/06/23 12:46:35 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/09 16:17:36 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	result;
 
 	i = 0;

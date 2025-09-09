@@ -1,58 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/09 16:16:24 by ogokdas           #+#    #+#             */
+/*   Updated: 2025/09/09 17:24:45 by ogokdas          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int get_chunk_count(int size)
+int	get_chunk_count(int size)
 {
-    int chunk_count;
-
-    if (size <= 100)
-        chunk_count = 5;
-    else if (size <= 500)
-        chunk_count = 13;
-    else
-        chunk_count = size / 42;
-
-    return chunk_count;
+	if (size <= 100)
+		return (5);
+	else if (size <= 500)
+		return (13);
+	return (size / 42);
 }
 
-int get_chunk_pivot(int chunk_index, int size, int chunk_count)
+int	get_chunk_pivot(int chunk_index, int size, int chunk_count)
 {
-    int base_size;
-    int remainder;
-    int pivot;
+	int	base_size;
+	int	remainder;
 
-    base_size = size / chunk_count;
-    remainder = size % chunk_count;
-
-    if (chunk_index < remainder)
-        pivot = (base_size + 1) * (chunk_index + 1) - 1;
-    else
-        pivot = base_size * (chunk_index + 1) + remainder - 1;
-
-    return pivot;
+	base_size = size / chunk_count;
+	remainder = size % chunk_count;
+	if (chunk_index < remainder)
+		return ((base_size + 1) * (chunk_index + 1) - 1);
+	return (base_size * (chunk_index + 1) + remainder - 1);
 }
-int shortest_way(t_stack *stack, int target)
+
+static int	ft_abs(int n)
 {
-    t_stack *tmp;
-    int pos;
-    int size;
-
-    tmp = stack;
-    pos = 0;
-    while (tmp)
-    {
-        if (tmp->value == target)
-            break;
-        pos++;
-        tmp = tmp->next;
-    }
-
-    size = stack_size(stack);
-
-    if (pos <= size / 2)
-        return pos;
-    else
-        return -(size - pos);
+	if (n < 0)
+		return (-n);
+	return (n);
 }
+
 static int	find_cheapest_in_chunk(t_stack *a, int prev_pivot, int pivot)
 {
 	int		best_val;
@@ -62,13 +49,13 @@ static int	find_cheapest_in_chunk(t_stack *a, int prev_pivot, int pivot)
 
 	tmp = a;
 	best_val = -1;
-	best_cost = 2147483647;
+	best_cost = INT_MAX;
 	while (tmp)
 	{
 		if (tmp->value > prev_pivot && tmp->value <= pivot)
 		{
 			cost = shortest_way(a, tmp->value);
-			if (abs(cost) < abs(best_cost))
+			if (ft_abs(cost) < ft_abs(best_cost))
 			{
 				best_cost = cost;
 				best_val = tmp->value;
@@ -79,7 +66,7 @@ static int	find_cheapest_in_chunk(t_stack *a, int prev_pivot, int pivot)
 	return (best_val);
 }
 
-void	push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot)
+void	push_chunk_value(t_stack **a, int prev_pivot, int pivot)
 {
 	int	val;
 	int	cost;
@@ -88,31 +75,14 @@ void	push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot)
 	if (val == -1)
 		return ;
 	cost = shortest_way(*a, val);
-	while (cost > 0)
+	while (cost > 0 && (*a)->value != val)
 	{
 		ra(a);
 		cost--;
 	}
-	while (cost < 0)
+	while (cost < 0 && (*a)->value != val)
 	{
 		rra(a);
 		cost++;
 	}
-
-    if (*b && val < (*b)->value)
-		rb(b);
-	
-	pb(a, b);
-}
-
-int get_max(t_stack *stack)
-{
-    int max = stack->value;
-    while (stack)
-    {
-        if (stack->value > max)
-            max = stack->value;
-        stack = stack->next;
-    }
-    return max;
 }

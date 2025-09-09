@@ -6,7 +6,7 @@
 /*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:21 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/08 21:06:15 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/09 16:21:07 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,13 @@ void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-void	free_split(char **split)
+int	is_sorted(t_stack *stack)
 {
-	int	i;
-
-	i = 0;
-	while (split[i])
+	while (stack && stack->next)
 	{
-		free(split[i]);
-		i++;
+		if (stack->value > stack->next->value)
+			return (0);
+		stack = stack->next;
 	}
-	free(split);
-}
-int is_sorted(t_stack *stack)
-{
-    while (stack && stack->next)
-    {
-        if (stack->value > stack->next->value)
-            return (0);
-        stack = stack->next;
-    }
-    return (1);
+	return (1);
 }
