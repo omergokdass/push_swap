@@ -12,7 +12,7 @@ SRC = push_swap.c \
 	normalize.c \
 	sort_utils.c \
 	helper_utils.c \
-	chunk_sort.c
+	big_sort.c
 
 LIBFT = libft/libft.a
 INCLUDE = -Iinclude -Ilibft

@@ -6,7 +6,7 @@
 /*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:16:24 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/09 17:24:45 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/11 16:55:33 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	find_cheapest_in_chunk(t_stack *a, int prev_pivot, int pivot)
 	return (best_val);
 }
 
-void	push_chunk_value(t_stack **a, int prev_pivot, int pivot)
+void	push_chunk_value(t_stack **a, t_stack **b, int prev_pivot, int pivot)
 {
 	int	val;
 	int	cost;
@@ -85,4 +85,7 @@ void	push_chunk_value(t_stack **a, int prev_pivot, int pivot)
 		rra(a);
 		cost++;
 	}
+	if (*b && val < (*b)->value)
+		rb(b);
+	pb(a, b);
 }

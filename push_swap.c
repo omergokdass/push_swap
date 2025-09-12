@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogokdas <ogokdas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ogokdas <ogokdas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 15:47:32 by ogokdas           #+#    #+#             */
-/*   Updated: 2025/09/09 16:37:33 by ogokdas          ###   ########.fr       */
+/*   Updated: 2025/09/11 15:16:08 by ogokdas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	if (is_sorted(a))
 		return (free_stack(&a), 0);
 	b = NULL;
-	big_sort(&a, &b);
+	chunk_sort(&a, &b);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);
